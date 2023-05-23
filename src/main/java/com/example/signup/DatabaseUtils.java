@@ -1,4 +1,4 @@
-package com.example.DB;
+package com.example.signup;
 
 import java.io.IOException;
 
@@ -7,8 +7,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.UUID;
 
-import com.example.contrloller.LoggedInController;
+import com.example.ConTroller.LoggedInController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -45,12 +46,107 @@ public class DatabaseUtils {
         stage.show();
     }
 
-    public static void signUpUser(ActionEvent event, String username, String password, String status){
+
+    public static void signUpUser(ActionEvent event, String username, String password) {
         Connection connection = null;
         PreparedStatement preparedStatementInsert = null;
         PreparedStatement preparedStatementCheckUserExists = null;
         ResultSet resultSet = null;
+        String user_id = UUID.randomUUID().toString();
 
+        try {
+            // Conection M3A BD
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user-database", "root", "root");
+
+            // Check if the username already exists
+            preparedStatementCheckUserExists = connection.prepareStatement("SELECT * FROM user WHERE username = ?");
+            preparedStatementCheckUserExists.setString(1, username);
+            resultSet = preparedStatementCheckUserExists.executeQuery();
+
+            if (resultSet.isBeforeFirst()) {
+                // Username is already taken
+                System.out.println("Username is already taken");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Username is already taken");
+                alert.show();
+            } else {
+                // Insert the new user
+                preparedStatementInsert =  connection.prepareStatement("INSERT INTO user (user_id, username, password) VALUES (?, ?, ?)");
+                preparedStatementInsert.setString(1, user_id);
+                preparedStatementInsert.setString(2, username);
+                preparedStatementInsert.setString(3, password);
+                preparedStatementInsert.executeUpdate();
+                preparedStatementInsert.close();
+
+                // Retrieve the user_id of the newly inserted user
+                PreparedStatement preparedStatementGetUserID = connection.prepareStatement("SELECT user_id FROM user WHERE username = ?");
+                preparedStatementGetUserID.setString(1, username);
+                ResultSet resultSetUserID = preparedStatementGetUserID.executeQuery();
+
+                if (resultSetUserID.next()) {
+                    int userId = resultSetUserID.getInt("user_id");
+                    resultSetUserID.close();
+                    preparedStatementGetUserID.close();
+
+                    // Close the database connection
+                    connection.close();
+
+                    // Perform further actions with the user_id
+                    changeScene(event, "reservation.fxml", "Welcome!", username, String.valueOf(userId));
+                } else {
+                    System.out.println("Failed to retrieve user_id");
+                    // Handle the error case when user_id cannot be retrieved
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the SQLException
+        } finally {
+            // Close the ResultSets, PreparedStatements, and Connection
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (preparedStatementCheckUserExists != null) {
+                try {
+                    preparedStatementCheckUserExists.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (preparedStatementInsert != null) {
+                try {
+                    preparedStatementInsert.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+/*
         try{
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user-database", "root", "root");
             preparedStatementCheckUserExists = connection.prepareStatement("SELECT * FROM user WHERE username= ?");
@@ -62,12 +158,12 @@ public class DatabaseUtils {
                 alert.setContentText("Username is already taken");
                 alert.show();
             }else{
-                preparedStatementInsert = connection.prepareStatement("INSERT INTO user (username, password, status) VALUES (?, ?, ?)");
-                preparedStatementInsert.setString(1, username);
-                preparedStatementInsert.setString(2, password);
-                preparedStatementInsert.setString(3, status);
+                preparedStatementInsert = connection.prepareStatement("INSERT INTO user (user_id,username, password) VALUES (?, ?, ?)");
+                preparedStatementInsert.setString(1, user_id);
+                preparedStatementInsert.setString(2, username);
+                preparedStatementInsert.setString(3, password);
                 preparedStatementInsert.executeUpdate();
-                changeScene(event, "logged-in.fxml", "Welcome!", username, status);
+                changeScene(event, "reservation.fxml", "Welcome!", username, status);
             }
         }catch(SQLException e){
             e.printStackTrace();
@@ -78,7 +174,7 @@ public class DatabaseUtils {
                 }catch(SQLException e){
                     e.printStackTrace();
                 }
-            }    
+            }
             if(preparedStatementCheckUserExists != null){
                 try{
                     preparedStatementCheckUserExists.close();
@@ -100,8 +196,8 @@ public class DatabaseUtils {
                     e.printStackTrace();
                 }
             }
-        }
-    }
+        }*/
+
 
     public static void logInUser(ActionEvent event, String username, String password){
 

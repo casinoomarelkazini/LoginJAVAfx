@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.signup.LoggedInController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ConTroller.LoggedInController">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="1058.0">
+      <AnchorPane prefHeight="400.0" prefWidth="299.0" style="-fx-background-color: #7fea19;">
          <children>
-            <Button fx:id="Button_Logout" layoutX="226.0" layoutY="293.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: RED;" text="Logout" textFill="WHITE">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="18.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="165.0" fitWidth="299.0" layoutX="151.0">
-               <image>
-                  <Image url="@youtube.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="Label_Welcome" alignment="CENTER" layoutX="185.0" layoutY="162.0" prefHeight="28.0" prefWidth="232.0" text="Welcome!">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="24.0" />
-               </font>
-            </Label>
-            <Label fx:id="Label_Status" alignment="CENTER" layoutY="211.0" prefHeight="28.0" prefWidth="600.0" text="This is your YouTube creator channel">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="24.0" />
-               </font>
-            </Label>
+            <Pane prefHeight="400.0" prefWidth="269.0" style="-fx-background-color: #000000;">
+               <children>
+                  <TextField fx:id="userIdField" layoutX="80.0" layoutY="57.0" prefHeight="25.0" prefWidth="115.0" promptText="User ID" style="-fx-background-color: white;" />
+                  <TextField fx:id="terrainIdField" layoutX="80.0" layoutY="111.0" prefHeight="25.0" prefWidth="115.0" promptText="Terrain ID" style="-fx-background-color: white;" />
+                  <DatePicker fx:id="datePicker" layoutX="80.0" layoutY="168.0" prefHeight="25.0" prefWidth="115.0" promptText="Reservation Date" />
+                  <Label layoutX="11.0" layoutY="61.0" prefHeight="18.0" prefWidth="57.0" text="user_id" textFill="WHITE" />
+                  <Label layoutX="6.0" layoutY="115.0" prefHeight="18.0" prefWidth="67.0" text="Terrain_id" textFill="WHITE" />
+                  <Label layoutX="6.0" layoutY="172.0" prefHeight="18.0" prefWidth="67.0" text="DAte" textFill="WHITE" />
+                  <Button graphicTextGap="7.0" layoutX="14.0" layoutY="348.0" onAction="#submitReservation" prefHeight="35.0" prefWidth="83.0" style="-fx-background-color: red;" text="Submit" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="SE_RESIZE" />
+                     </cursor>
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="16.0" />
+                     </font></Button>
+                  <Button fx:id="Button_Logout" layoutX="159.0" layoutY="346.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="99.0" style="-fx-background-color: RED;" text="Logout" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children></Pane>
          </children>
       </AnchorPane>
    </children>

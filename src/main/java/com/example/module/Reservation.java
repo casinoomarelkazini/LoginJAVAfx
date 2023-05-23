@@ -1,3 +1,5 @@
+package com.example.module;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -18,6 +20,10 @@ public class Reservation {
         this.reservationDate = reservationDate;
         this.startTime = startTime;
         this.endTime = endTime;
+    }
+
+    public Reservation(int userId, int terrainId, LocalDate reservationDate) {
+
     }
 
     // Getters and setters

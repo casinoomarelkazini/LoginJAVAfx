@@ -1,5 +1,6 @@
-package com.example.signup;
+package com.example.ConTroller;
 
+import com.example.signup.DatabaseUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

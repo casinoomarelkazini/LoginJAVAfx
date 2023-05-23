@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.signup.Controller">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ConTroller.Controller">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="400.0">
+      <AnchorPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #6D6D6D;">
          <children>
-            <Label layoutX="8.0" layoutY="124.0" text="Username:">
+            <Label layoutX="8.0" layoutY="124.0" prefHeight="22.0" prefWidth="102.0" text="Username:">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -28,7 +24,7 @@
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </TextField>
-            <Label layoutX="11.0" layoutY="56.0" text="Log In to your YouTube account">
+            <Label layoutX="11.0" layoutY="56.0" text="Reservation de Terrin ">
                <font>
                   <Font name="Arial Rounded MT Bold" size="21.0" />
                </font>
@@ -38,17 +34,12 @@
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </TextField>
-            <ImageView fitHeight="56.0" fitWidth="105.0" layoutX="10.0">
-               <image>
-                  <Image url="@youtube.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="Button_LogIn" layoutX="158.0" layoutY="299.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-cursor: hand; -fx-background-color: red;" text="Log In" textFill="WHITE">
+            <Button fx:id="Button_LogIn" layoutX="158.0" layoutY="299.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="145.0" style="-fx-cursor: hand; -fx-background-color: #ff0000;" text="Log In" textFill="#000000">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Button>
-            <ImageView fitHeight="102.0" fitWidth="105.0" layoutX="10.0" layoutY="284.0">
+            <ImageView fitHeight="83.0" fitWidth="93.0" layoutX="10.0" layoutY="284.0">
                <image>
                   <Image url="@lock.png" />
                </image>
@@ -58,30 +49,35 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="Button_SignUp" layoutX="254.0" layoutY="350.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Sign Up!" textFill="RED" underline="true">
+            <Button fx:id="Button_SignUp" layoutX="254.0" layoutY="350.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Sign Up!" textFill="#ff0000" underline="true">
                <font>
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: RED;">
+      <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #3fbe0d;">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="50.0" layoutY="34.0">
+            <ImageView fitHeight="73.0" fitWidth="78.0" layoutX="25.0" layoutY="239.0">
                <image>
                   <Image url="@user.png" />
                </image>
             </ImageView>
-            <Label layoutX="87.0" layoutY="200.0" text="Contact:" textFill="WHITE">
+            <Label layoutX="142.0" layoutY="275.0" text="Contact:" textFill="#000000">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="8.0" layoutY="217.0" prefHeight="150.0" prefWidth="233.0" text="Google LLC, D/B/A YouTube 901 Cherry Ave. San Bruno, CA 94066 USA Faks: +1 650-253-0001" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Label alignment="CENTER" layoutX="5.0" layoutY="334.0" prefHeight="58.0" prefWidth="196.0" text="Finding Motivation to Be Your Best Self" textAlignment="CENTER" textFill="#000000" wrapText="true">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Label>
+            <ImageView fitHeight="164.0" fitWidth="213.0" layoutX="20.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@efezfeq.PNG" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
